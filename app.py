@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import url_for
 from markupsafe import escape
-
+from flask import render_template
 app = Flask(__name__)
 
 @app.route('/')
@@ -28,3 +28,18 @@ def test_url_for():
 	print(url_for('test_url_for'))
 	print(url_for('test_url_for', num=2))
 	return 'Test Page'
+
+
+
+name = 'Yan Zhimin'
+movies = [
+	{'title': '1', 'year': '1988'},
+	{'title': '2', 'year': '1989'},
+	{'title': '3', 'year': '1993'},
+	{'title': '4', 'year': '1982'},
+	{'title': '5', 'year': '1989'}
+]
+
+@app.route('/index')
+def index():
+	return render_template('index.html', name=name, movies=movies)
