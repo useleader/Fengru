@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'hello world'
+    return '<h1>hello world</h1><img src="https://github.com/useleader/Fengru/blob/main/src/image/Bob.jpeg'
 
 @app.route('/python')
 def hello_python():
