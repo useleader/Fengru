@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return '<h1>hello world</h1><img src="http://127.0.0.1:5000/src/image/Bob.jpeg">'
+    return '<h1>hello world</h1><img src="/static/images/favicon.png">'
 
 @app.route('/python')
 def hello_python():
@@ -27,6 +27,7 @@ def test_url_for():
 	print(url_for('user_page', name='Alice'))
 	print(url_for('test_url_for'))
 	print(url_for('test_url_for', num=2))
+	print(url_for('static', filename='favicon.png'))
 	return 'Test Page'
 
 

@@ -3,20 +3,33 @@
     <head>
         <meta charset="utf-8">
         <title>{{ name }}'s Watchlist</title>
+        <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" type="text/css">
     </head>
     <body>
+        <h2>
+            {{ name }}'s Appearance
+            <img alt="Running Bob" class="bob" src="{{ url_for('static', filename='images/Bob.jpeg')}}">
+        </h2>
+
         <h2>{{ name }}'s page</h2>
         {# 使用 length 过滤器获取 movie 变量的长度 #}
+        
         <p>{{ movies|length }} Titles</p>
-        <ul>
+        
+        <ul class="movie-list">
             {% for movie in movies %} {# 迭代 movies 变量 #}
             <li>
                 {{ movie.title }} - {{ movie.year }}
             </li>
             {% endfor %}
         </ul>
+        <p>
+            <img alt="Star" class="bob" src="{{ url_for('static', filename='images/Patrick Star.jpeg')}}"
+        </p>
         <footer>
             <small>&copy; 2023 <a href="https://www.baidu.com">Baidu</a></small>
         </footer>
+    
     </body>
 </html>
