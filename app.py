@@ -138,3 +138,4 @@ def forge():
 
     db.session.commit()
     click.echo('Done.')
+    
