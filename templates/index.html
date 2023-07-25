@@ -2,17 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{{ name }}'s Watchlist</title>
+        <title>{{ user.name }}'s Watchlist</title>
         <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" type="text/css">
     </head>
     <body>
         <h2>
-            {{ name }}'s Appearance
+            {{ user.name }}'s Appearance
             <img alt="Running Bob" class="bob" src="{{ url_for('static', filename='images/Bob.jpeg')}}">
         </h2>
 
-        <h2>{{ name }}'s page</h2>
+        <h2>{{ user.name }}'s page</h2>
         {# 使用 length 过滤器获取 movie 变量的长度 #}
         
         <p>{{ movies|length }} Titles</p>
