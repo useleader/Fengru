@@ -112,7 +112,6 @@ git branch -dr [remote/branch] # delete remote branch
   >>> db.session.delete(movie)  # 使用 db.session.delete() 方法删除记录，传入模型实例
   >>> db.session.commit()  # 提交改动
   ```  
-
 - 在程序里操作数据库
 
   ```python
@@ -148,9 +147,39 @@ git branch -dr [remote/branch] # delete remote branch
     }
   ```
     之后在头部敲入header即可自动弹出上面的注释。
+- 模板优化
+  `@app.errorhandler(404)`错误处理函数
+  使用`@app.context_processor`需要返回字典-上下文处理函数
+  ```python
+  @app.context_processor
+  def inject_user():  # 函数名可以随意修改
+      user = User.query.first()
+      return dict(user=user)  # 需要返回字典，等同于 return {'user': user}
+  ```
+  模板继承组织模板
 ## 参考资料
 
 1. [Hello,Flask!](https://tutorial.helloflask.com/hello/)
 2. [数据库](https://tutorial.helloflask.com/database/)
 3. [添加Python模板信息](www.yisu.com/zixun/155844.html)
 4. [SQLAlchemy报错解决方案](https://blog.csdn.net/stone0823/article/details/90488029)
+5. [模板优化](https://tutorial.helloflask.com/template2/)
+
+# 7.26学习记录
+
+## 模板继承组织模板
+
+解决模板内容重复问题
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+添加了`<meta>`元素，该元素会设置页面的视口，让页面根据设备的宽度来自动缩放页面
+
+**url_for**()函数的处理上存在着问题，为什么直接`url_for('index')`也能够找到？**
+
+- {{ ... }} 用来标记变量。
+- {% ... %} 用来标记语句，比如 if 语句，for 语句等。
+- {# ... #} 用来写注释。
+
+使用`entends`标签声明扩展来源，定义`content`块，内容会填充到基模板的`content`位置。
