@@ -218,8 +218,45 @@ app.config['SECRET_KEY'] = 'xxx'
 
 ### 删除条目
 
+### **表单这里好难**，需要多看看
+
+## 用户认证
+
+用户分为两类：
+- 管理员：通过用户名和密码登入程序，可以执行数据相关的操作
+- 访客：只能浏览页面
+
+**安全存储密码**
+
+Flask的依赖Werkzeug内置了用于生成和验证密码散列值的函数，`werkzeug.security.generate_password_hash()`用来为给定的密码生成密码散列值，而`werkzeug.security.check_password_hash()`用来检查是否对应
+
+**使用Flask-Login实现用户认证**
+
+```python
+from flask_login import LoginManager
+
+login_manager = LoginManager(app)  # 实例化扩展类
+
+@login_manager.user_loader
+def load_user(user_id):  # 创建用户加载回调函数，接受用户 ID 作为参数
+    user = User.query.get(int(user_id))  # 用 ID 作为 User 模型的主键查询对应的用户
+    return user  # 返回用户对象
+
+"""--------------------------------------"""
+from flask_login import UserMixin
+
+
+class User(db.Model, UserMixin):
+    # ...
+
+```
+
+Flask-Login提供了一个`current_user`变量，当程序运行后，如果用户已经登录，`current_user`变量的值会是当前用户的用户模型类记录。
+
+继承`UserMixin`类可以让`User`类拥有几个用于判断认证状态的属性和方法，`is_authenticated`
 
 ## 参考资料
 
 1. [模板优化](https://tutorial.helloflask.com/template2/)
 2. [表单](https://tutorial.helloflask.com/form/)
+3. [用户认证](https://tutorial.helloflask.com/login/)
