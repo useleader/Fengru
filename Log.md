@@ -183,3 +183,43 @@ git branch -dr [remote/branch] # delete remote branch
 - {# ... #} 用来写注释。
 
 使用`entends`标签声明扩展来源，定义`content`块，内容会填充到基模板的`content`位置。
+
+## 表单
+
+### **提交表单**
+
+```html
+<p>{{ movies|length }} Titles</p>
+<form method="post">
+    Name <input type="text" name="title" autocomplete="off" required>
+    Year <input type="text" name="year" autocomplete="off" required>
+    <input class="btn" type="submit" name="submit" value="Add">
+</form>
+<!-- autocomplete 属性设为 off 来关闭自动完成（按下输入框不显示历史输入记录）；另外还添加了 required 标志属性，如果用户没有输入内容就按下了提交按钮，浏览器会显示错误提示。 -->
+```
+
+### 处理表单
+
+```python
+@app.route('/', methods=['GET','POST'])
+```
+通过`request.form`获取表单数据，请求的路径`request.path`，请求的方法`request.method`，查询字符串`request.args`
+
+**flash信息**
+
+`flash()`在内部会把消息存储到Flask提供的`session`对象里，`session`用来在请求间存储数据，它会把数据签名后存储到浏览器的cookie中，所以需要设置签名所需的密钥：
+```python
+app.config['SECRET_KEY'] = 'xxx'
+```
+
+### 编辑条目
+
+`get_or_404()`返回对应主键的记录，如果没有找到，则返回404错误
+
+### 删除条目
+
+
+## 参考资料
+
+1. [模板优化](https://tutorial.helloflask.com/template2/)
+2. [表单](https://tutorial.helloflask.com/form/)
