@@ -299,3 +299,9 @@ Flask-Login提供了一个`current_user`变量，当程序运行后，如果用�
 1. [模板优化](https://tutorial.helloflask.com/template2/)
 2. [表单](https://tutorial.helloflask.com/form/)
 3. [用户认证](https://tutorial.helloflask.com/login/)
+
+
+# 7.29学习记录
+
+## 组织代码
+
