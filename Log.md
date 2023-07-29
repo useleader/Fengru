@@ -255,6 +255,45 @@ Flask-Login提供了一个`current_user`变量，当程序运行后，如果用�
 
 继承`UserMixin`类可以让`User`类拥有几个用于判断认证状态的属性和方法，`is_authenticated`
 
+## 测试
+
+自动化测试的实现
+
+1. 单元测试：对程序中的函数等独立单元编写的测试。
+
+  测试框架unittest，测试用例继承`unittest.TestCase`类，类中创建的以`test_`开头的方法会被视为测试方法。
+
+  `setUp()`在每个测试方法执行前被调用，`tearDown()`在每个测试方法执行后被调用
+
+  每个测试方法对应一个要测试的函数/功能/使用场景。
+
+  使用断言方法来判断程序功能是否正常，函数调用返回值保存为`rv`，使用`self.assertEqual(rv, {{ 预期结果 }})`来判断返回值内容是否符合预期。
+
+  将`TESTING`设为`True`开启测试模式，出错时不会输出多余信息，将`SQLALCHEMY_DATABASE_URI`设为`sqlite///:memory:`使用SQLite内存型数据库，不会干扰开发时使用的数据库文件，且速度更快。
+
+  调用`db.create_all()`创建数据库和表，然后添加测试数据到数据库中；`db.session.remove()`消除数据库会话并调用`db.drop_all()`删除数据库表。
+2. 测试Flask程序
+
+-  测试客户端
+
+测试辅助方法：`login()`使用`data`关键字以字典的形式传入请求数据，字典中的键为表单`<input>`元素的`name`属性值，作为登录表单的输入数据，将`follow_redirects`参数设置为`True`可以跟随重定向，返回的是重定向后的相应。
+
+**创建/更新/删除条目测试**
+
+`self.client.get`/`self.client.post`
+
+- 测试命令
+
+`self.runner.invoke`
+
+- 测试覆盖率
+  
+  ```bash
+  coverage run --source=app test_xxx.py
+  coverage report # 查看报告
+  coverage html #查看html报告
+  ```
+
 ## 参考资料
 
 1. [模板优化](https://tutorial.helloflask.com/template2/)
