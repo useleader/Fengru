@@ -320,3 +320,25 @@ Flask-Login提供了一个`current_user`变量，当程序运行后，如果用�
 
 ## 参考资料
 
+# 7.31学习记录
+
+## 部署前的准备
+
+```bash
+pip freeze > requirements.txt
+```
+
+对于某些配置，生产环境下需要使用不同的值，为了让配置更加灵活，在生产环境下使用的配置改为优先从环境变量中读取，如果没有读取到，则使用默认值
+
+```python
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev')
+app.config['SQLALCHEMY_DATABASE_RUI'] = prefix + os.path.join(os.path.dirname(app.root_path), os.getenv('DATABASE_FILE','data.db'))
+```
+`os.getenv(a,b)`表示读取系统环境变量`a`，如果没有获取到则使用`b`
+
+想密钥这种敏感信息，保存到环境变量中比直接写在代码中更安全。
+
+在部署程序时，我们不会使用Flask内置的开发服务器运行程序，因此，对于写到`.env`文件的环境变量，我们需要手动使用`python-dotenv`导入。
+
+创建一个wsgi.py脚本，在脚本中加载环境变量，并导入程序实例以供部署时使用
+
