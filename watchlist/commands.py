@@ -1,6 +1,7 @@
 import click
 from watchlist import app, db
-from watchlist.models import User, Movie
+from watchlist.models import User, Movie, Comment
+from datetime import datetime
 
 
 @app.context_processor
@@ -50,13 +51,15 @@ def forge():
         {"title": "WALL-E", "year": "2008"},
         {"title": "The Pork of Music", "year": "2012"},
     ]
-
+    comments = [{"name": "yzm", "time": datetime.now(), "message": "Hello, Flask!"}]
     user = User(name=name)
     db.session.add(user)
     for m in movies:
         movie = Movie(title=m["title"], year=m["year"])
         db.session.add(movie)
-
+    for c in comments:
+        comment = Comment(name=c["name"], time=c["time"], message=c["message"])
+        db.session.add(comment)
     db.session.commit()
     click.echo("Done.")
 

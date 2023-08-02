@@ -342,3 +342,33 @@ app.config['SQLALCHEMY_DATABASE_RUI'] = prefix + os.path.join(os.path.dirname(ap
 
 创建一个wsgi.py脚本，在脚本中加载环境变量，并导入程序实例以供部署时使用
 
+## 使用PythonAnywhere部署程序
+
+```bash
+$ git clone -b 分支名 网址.git 
+$ git clone -b lesson-2 https://github.com/hemiahwu/vue-basic-playlist.git
+
+```
+
+## 参考资料
+
+1. [部署上线](https://tutorial.helloflask.com/deploy/)
+
+# 8.1学习记录
+
+添加留言板功能，以下是编写的提示：
+
+- 创建留言板的模型类，更新数据库表，该类名为`Comment`,包括`id`,`time`,`message`,`likes`
+- 创建留言页面的模板，在base里面添加超链接，创建`comments.html`
+- 在模板中添加留言表单，以`post`的形式上传信息，需要用户填写的信息只有`message`
+- 添加显示留言页面的视图函数`@app.route('/comments', methods=['GET','POST'])`
+- 在显示留言页面的视图函数编写处理表单的代码
+- 生成一些测试数据
+- 编写单元测试
+
+## 参考资料
+
+1.[SQLAlchemy 常用数据类型](https://cloud.tencent.com/developer/article/1619598)
+
+# 8.2学习记录
+

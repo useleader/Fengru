@@ -26,6 +26,7 @@
             {% else %}
                 <li><a href="{{ url_for('login')}}">login</a></li>
             {% endif %}
+            <li><a href="{{ url_for('comment') }}">Comments</a></li>
         </ul>
     </nav>
     {% block content %}{% endblock %}

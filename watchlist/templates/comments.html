@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+    Weclome To Our Comment Zone!!!
+</p>
+<ul class="comment-list">
+    {% for comment in comments %}
+    <li>
+        {{ comment.name }} - {{ comment.time }} <br>
+        {{ comment.message}}
+    </li>
+    {% endfor %}
+    <form method="post">
+        Name <input type="text" name="name" autocomplete="off" required> <br>
+        Comment <br>
+        <input type="text" name="message" autocomplete="off" required>
+        <input class="btn" type="submit" name="submit" value="Launch">
+    </form>
+</ul>
+{% endblock %}

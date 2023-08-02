@@ -1,8 +1,9 @@
 from watchlist import app, db
-from watchlist.models import User, Movie
+from watchlist.models import User, Movie, Comment
 from flask import url_for, render_template, redirect, flash, request
 from flask_login import login_user, login_required, logout_user, current_user
 from markupsafe import escape
+from datetime import datetime
 
 
 @app.context_processor
@@ -116,3 +117,21 @@ def delete(movie_id):
     db.session.commit()
     flash("Item Deleted.")
     return redirect(url_for("index"))
+
+
+@app.route("/comments", methods=["GET", "POST"])
+def comment():
+    if request.method == "POST":
+        name = request.form.get("name")
+        message = request.form.get("message")
+        time = datetime.now()
+        if not name or not message or len(name) > 60 or len(message) > 2000:
+            flash("Invalid Input.")
+            return redirect(url_for("comment"))
+        one_comment = Comment(name=name, message=message, time=time)
+        db.session.add(one_comment)
+        db.session.commit()
+        flash('Comment Created!')
+        return redirect(url_for('comment'))
+    comments = Comment.query.all()
+    return render_template("comments.html", comments=comments)
