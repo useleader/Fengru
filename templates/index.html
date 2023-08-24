@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT Flask App</title>
+</head>
+<body>
+    <h1>ChatGPT Flask App</h1>
+    <form action="/chat" method="post">
+        <label for="user_input">You:</label><br>
+        <input type="text" id="user_input" name="user_input"><br>
+        <button type="submit">Send</button>
+    </form>
+    
+    {% if user_input %}
+    <p>You: {{ user_input }}</p>
+    <p>ChatGPT: {{ chat_response }}</p>
+    {% endif %}
+</body>
+</html>
