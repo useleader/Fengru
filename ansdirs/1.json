@@ -1,0 +1,29 @@
+{
+    "instruction": "hello, where are you?",
+    "output": "I am in USA.",
+    "revision": {
+        "score": 3,
+        "reason": "评分理由：数据的问题与答案基本吻合，问题描述足够清晰完整，答案也是精确并切题。"
+    },
+    "completion": {
+        "id": "chatcmpl-7uW7nGsPb8NSt3cukLk8khlAMJfvR",
+        "object": "chat.completion",
+        "created": 1693704211,
+        "model": "gpt-3.5-turbo-0613",
+        "choices": [
+            {
+                "index": 0,
+                "message": {
+                    "role": "assistant",
+                    "content": "{\"score\": 3, \"reason\": \"评分理由：数据的问题与答案基本吻合，问题描述足够清晰完整，答案也是精确并切题。\"}"
+                },
+                "finish_reason": "stop"
+            }
+        ],
+        "usage": {
+            "prompt_tokens": 500,
+            "completion_tokens": 54,
+            "total_tokens": 554
+        }
+    }
+}

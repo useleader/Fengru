@@ -1,0 +1,29 @@
+{
+    "instruction": "hello, what's your name?",
+    "output": "My name is ChatGPT.",
+    "revision": {
+        "score": 4,
+        "reason": "评分理由：该数据的问题与答案高度吻合，问题描述清晰完整，答案精确并切题。"
+    },
+    "completion": {
+        "id": "chatcmpl-7uW7lE1qCg7IkjEyNcJ0wdsj2Ab5k",
+        "object": "chat.completion",
+        "created": 1693704209,
+        "model": "gpt-3.5-turbo-0613",
+        "choices": [
+            {
+                "index": 0,
+                "message": {
+                    "role": "assistant",
+                    "content": "{\"score\": 4, \"reason\": \"评分理由：该数据的问题与答案高度吻合，问题描述清晰完整，答案精确并切题。\"}"
+                },
+                "finish_reason": "stop"
+            }
+        ],
+        "usage": {
+            "prompt_tokens": 503,
+            "completion_tokens": 49,
+            "total_tokens": 552
+        }
+    }
+}

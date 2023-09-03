@@ -1,0 +1,29 @@
+{
+    "instruction": "hello, how are you?",
+    "output": "I am fine, thank you.",
+    "revision": {
+        "score": 4,
+        "reason": "评分理由：数据的问题与答案高度吻合，问题描述清晰完整，答案精确并切题。"
+    },
+    "completion": {
+        "id": "chatcmpl-7uW7rnxXH3ZrBTbpNvl9woBwGx1Jh",
+        "object": "chat.completion",
+        "created": 1693704215,
+        "model": "gpt-3.5-turbo-0613",
+        "choices": [
+            {
+                "index": 0,
+                "message": {
+                    "role": "assistant",
+                    "content": "{\"score\": 4, \"reason\": \"评分理由：数据的问题与答案高度吻合，问题描述清晰完整，答案精确并切题。\"}"
+                },
+                "finish_reason": "stop"
+            }
+        ],
+        "usage": {
+            "prompt_tokens": 502,
+            "completion_tokens": 48,
+            "total_tokens": 550
+        }
+    }
+}

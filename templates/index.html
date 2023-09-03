@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="UTF-8">
 <head>
-    <title>ChatGPT Flask App</title>
+    <meta charset="UTF-8">
+    <title>ChatGPT问答</title>
 </head>
 <body>
-    <h1>ChatGPT Flask App</h1>
-    <form action="/chat" method="post">
-        <label for="user_input">You:</label><br>
-        <input type="text" id="user_input" name="user_input"><br>
-        <button type="submit">Send</button>
+    <h1>ChatGPT问答</h1>
+    <form method="POST" action="/">
+        <label for="question">请输入您的问题：</label>
+        <input type="text" id="question" name="question" required>
+        <button type="submit">提交</button>
     </form>
-    
-    {% if user_input %}
-    <p>You: {{ user_input }}</p>
-    <p>ChatGPT: {{ chat_response }}</p>
+    {% if question %}
+        <h2>您的问题：</h2>
+        <p>{{ question }}</p>
+        <h2>回答：</h2>
+        <p>{{ answer }}</p>
     {% endif %}
 </body>
 </html>
